@@ -60,7 +60,7 @@ class ArtistsController extends Controller {
         } else {
             $messages = $validator->messages();
             flash($messages);
-            return Redirect('AlbumsController@index');
+            return Redirect('artists/create')->withInput();
         }
     }
 
@@ -98,11 +98,10 @@ class ArtistsController extends Controller {
                 $artist->name = Input::get('name');
                 $artist->update();
                 flash()->success('Artist has been edited');
-                return redirect('/');
             } else {
                 flash()->error('Artist already exists');
-                return redirect('/');
             }
+            return redirect('/');
         }
     }
 

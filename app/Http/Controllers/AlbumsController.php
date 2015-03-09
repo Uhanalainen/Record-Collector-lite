@@ -73,12 +73,12 @@ class AlbumsController extends Controller {
 				$album->save();
 				flash()->success('Your album has been added');
 
-				return Redirect::to('/');
+				return Redirect('/');
 			}
 		} else {
 			$messages = $validator->messages();
 			flash($messages);
-			return Redirect('albums.create')->withInput();
+			return Redirect('albums/create')->withInput();
 		}
 	}
 
@@ -135,7 +135,7 @@ class AlbumsController extends Controller {
 		} else {
 			$messages = $validator->messages();
 			flash($messages);
-			return Redirect('AlbumsController@index');
+			return Redirect('albums/create')->withInput();
 		}
 	}
 
