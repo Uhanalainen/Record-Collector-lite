@@ -27,7 +27,7 @@ class AlbumsController extends Controller {
 		$formats = Format::lists('name', 'id');
 		$artists = Artist::lists('name', 'id');
 
-		return view('albums.create', compact('formats', 'artists'));
+		return view('albums/create', compact('formats', 'artists'));
 	}
 
 	public function store()
@@ -57,7 +57,7 @@ class AlbumsController extends Controller {
 
 			if ($exists) {
 				flash()->error('Album already exists');
-				return Redirect('albums.create')->withInput();
+				return Redirect('albums/create')->withInput();
 			} else {
 				$purchase = new Purchase;
 				$purchase->price = Input::get('price');
@@ -119,7 +119,7 @@ class AlbumsController extends Controller {
 
 			if ($exists) {
 				flash()->error('Album already exists');
-				return Redirect('AlbumsController@index');
+				return Redirect('/');
 			} else {
 				$album = Album::findOrFail($id);
 				$album->name = Input::get('title');
@@ -130,7 +130,7 @@ class AlbumsController extends Controller {
 				$album->update();
 				flash()->success('Your album has been edited');
 
-				return Redirect::to('/');
+				return Redirect('/');
 			}
 		} else {
 			$messages = $validator->messages();
