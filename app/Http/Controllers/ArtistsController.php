@@ -55,7 +55,7 @@ class ArtistsController extends Controller {
                 return Redirect::to('/');
             } else {
                 flash()->error('Artist already exists');
-                return Redirect('artistCreate')->withInput();
+                return Redirect('artists.create')->withInput();
             }
         } else {
             $messages = $validator->messages();

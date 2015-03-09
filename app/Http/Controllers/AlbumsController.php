@@ -57,7 +57,7 @@ class AlbumsController extends Controller {
 
 			if ($exists) {
 				flash()->error('Album already exists');
-				return Redirect('albumCreate')->withInput();
+				return Redirect('albums.create')->withInput();
 			} else {
 				$purchase = new Purchase;
 				$purchase->price = Input::get('price');
@@ -78,7 +78,7 @@ class AlbumsController extends Controller {
 		} else {
 			$messages = $validator->messages();
 			flash($messages);
-			return Redirect('albumCreate')->withInput();
+			return Redirect('albums.create')->withInput();
 		}
 	}
 
