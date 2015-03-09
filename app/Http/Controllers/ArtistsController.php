@@ -57,6 +57,10 @@ class ArtistsController extends Controller {
                 flash()->error('Artist already exists');
                 return Redirect('artistCreate')->withInput();
             }
+        } else {
+            $messages = $validator->messages();
+            flash($messages);
+            return Redirect('AlbumsController@index');
         }
     }
 
