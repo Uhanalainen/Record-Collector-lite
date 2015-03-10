@@ -1,31 +1,26 @@
 @extends('layout')
 
 @section('content')
-    <div class="page-header">
-        <h1>{{ $artist->name }}</h1>
+    <div class="container">
+        <h1 class ="page-heading" style="text-align: center;">All albums</h1>
     </div>
-
     @if( $albums->isEmpty())
-        <p>There are no albums! :(</p>
+        <p>There are no artists! :(</p>
     @else
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>Album</th>
-                <th>Format</th>
-                <th>Bought</th>
-                <th>From</th>
+                <th>Artist</th>
                 <th>Price</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            @foreach( $albums as $album)
+            @foreach($albums as $album)
                 <tr>
                     <td>{{ $album->name }}</td>
-                    <td>{{ $album->format->name }}</td>
-                    <td>{{ $album->purchase->created_at }}</td>
-                    <td>{{ $album->purchase->purchased_from }}</td>
+                    <td>{{ $album->artist->name }}</td>
                     <td>{{ $album->purchase->price }}€</td>
                     <td>
                         <a href="{{ action('AlbumsController@edit', $album->id) }}" class="btn btn-default">Edit</a>
@@ -35,14 +30,12 @@
             @endforeach
             <tr>
                 <td>Total albums: {{ $totalAlbums }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>Total price: {{ $total }}€</td>
+                <td>Total artists: {{ $totalArtists }}</td>
+                <td>Total price: {{ $price }}€</td>
                 <td></td>
             </tr>
-
             </tbody>
         </table>
     @endif
+
 @endsection

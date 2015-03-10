@@ -13,7 +13,7 @@
     </div>
     <input type="submit" value="Edit artist" class="btn btn-primary" />
 
-    <a href="{{ action('AlbumsController@index') }}" class="btn btn-link">Cancel</a>
+    <a href="{{ action('ArtistsController@index') }}" class="btn btn-link">Cancel</a>
 
     {!!Form::close() !!}
 @endsection

@@ -9,11 +9,15 @@
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="navbar-header">
-                <a href=" {{ action('AlbumsController@index') }}" class="navbar-brand">Album Collection</a>
-            </div>
-        </nav>
+        <a class="navbar-brand" href="#">Record Collector</a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/artists/create">Add artist</a></li>
+                <li><a href="/albums/create">Add album</a></li>
+                <li><a href="/albums/show">All albums</a></li>
+            </ul>
+        </div>
         @include('flash::message')
         @yield('content')
     </div>

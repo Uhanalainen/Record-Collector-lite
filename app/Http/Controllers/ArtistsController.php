@@ -13,12 +13,24 @@ use Illuminate\Support\Facades\Redirect;
 
 class ArtistsController extends Controller {
 
+    public function index()
+    {
+        $artists = Artist::select('name', 'id')->orderBy('name')->get();
+        return view('index', compact('artists'));
+    }
+
     public function show($id)
     {
         $artist = Artist::findOrFail($id);
         $albums = Album::where('artist_id', $id)->orderBy('name')->get();
+        $totalAlbums = $albums->count();
+        $total = 0;
+        foreach($albums as $album)
+        {
+            $total += $album->purchase->price;
+        }
 
-        return view('artists.show', compact('artist', 'albums'));
+        return view('artists.show', compact('artist', 'albums', 'total', 'totalAlbums'));
     }
 
     public function create()

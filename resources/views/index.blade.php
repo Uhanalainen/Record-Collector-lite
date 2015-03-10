@@ -1,17 +1,9 @@
 @extends('layout')
 
 @section('content')
-    <div class="page-header">
-        <h1>All artists</h1>
+    <div class="container">
+        <h1 class ="page-heading" style="text-align: center;">All artists</h1>
     </div>
-
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <a href="{{ action('ArtistsController@create') }}" class="btn btn-primary">Add artist</a>
-            <a href="{{ action('AlbumsController@create') }}" class="btn btn-primary">Add album</a>
-        </div>
-    </div>
-
     @if( $artists->isEmpty())
         <p>There are no artists! :(</p>
     @else

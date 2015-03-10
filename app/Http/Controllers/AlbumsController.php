@@ -14,17 +14,20 @@ use Laracasts\Flash\Flash;
 
 class AlbumsController extends Controller {
 
-
-	public function index()
+	public function show()
 	{
-		$artists = Artist::select('name', 'id')->orderBy('name')->get();
-		return view('index', compact('artists'));
+		$albums = Album::all();
+		$albums = $albums->sortBy('name');
+		$price = Purchase::sum('price');
+		$totalAlbums = $albums->count();
+		$totalArtists = Artist::count();
+		return view('albums.show', compact('albums', 'totalAlbums', 'price', 'totalArtists'));
 	}
 
 	public function create()
 	{
 		$formats = Format::lists('name', 'id');
-		$artists = Artist::lists('name', 'id');
+		$artists = Artist::orderBy('name')->lists('name', 'id');
 
 		return view('albums/create', compact('formats', 'artists'));
 	}

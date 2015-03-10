@@ -14,7 +14,7 @@
 Route::model('album', 'Album');
 Route::model('artist', 'Artist');
 
-Route::get('/', 'AlbumsController@index');
+Route::get('/', 'ArtistsController@index');
 Route::get('/artists/{id}/delete', 'ArtistsController@delete');
 Route::post('/artists/{id}/delete', 'ArtistsController@destroy');
 Route::get('/albums/{id}/delete', 'AlbumsController@delete');
