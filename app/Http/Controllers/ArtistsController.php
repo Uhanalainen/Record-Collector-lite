@@ -2,6 +2,7 @@
 
 use App\Album;
 use App\Artist;
+use App\Purchase;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
